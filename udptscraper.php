@@ -1,6 +1,6 @@
 <?php
 	/* 	Torrent UDP Scraper
-		v1.1
+		v1.2
 		
 		2010 by Johannes Zinnau
 		johannes@johnimedia.de
@@ -39,12 +39,11 @@
 			}
 			if(count($infohash) > 74){ throw new ScraperException('Too many infohashes provided.'); }
 			if(!preg_match('%udp://([^:/]*)(?::([0-9]*))?(?:/)?%si', $url, $m)){ throw new ScraperException('Invalid tracker url.'); }
-			$tracker = $m[1];
+			$tracker = 'udp://' . $m[1];
 			$port = isset($m[2]) ? $m[2] : 80;
 			
 			$transaction_id = mt_rand(0,65535);
-			
-			$fp = fsockopen('udp://tracker.openbittorrent.com', 80, $errno, $errstr);
+			$fp = fsockopen($tracker, $port, $errno, $errstr);
 			if(!$fp){ throw new ScraperException('Could not open UDP connection: ' . $errno . ' - ' . $errstr,0,true); }
 			stream_set_timeout($fp, $this->timeout);
 			
