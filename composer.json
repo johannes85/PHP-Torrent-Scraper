@@ -2,7 +2,7 @@
   "name": "johannes85/php-torrent-scraper",
   "description": "Classes to scrape a torrent status by using the HTTP or UDP protocol.",
   "type": "library",
-  "license": "by-sa/3.0",
+  "license": "CC-BY-SA-3.0",
   "authors": [
     {
       "name": "Johannes Zinnau",
