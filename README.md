@@ -1,4 +1,27 @@
+# PHP-Torrent-Scraper
+
 Classes to scrape a torrent status by using the HTTP or UDP protocol.
+
+## Example Usage:
+
+```php
+<?php
+
+include 'vendor/autoload.php';
+
+use Scrapers\Trackers as ST;
+
+$scraper = new ST\UdpScraper();
+
+$result = $scraper->scrape(
+    "udp://tracker.ilibr.org:6969/announce",
+    "7c18267426e81e849f282d1f9a10cf5a6a292c8c"
+);
+
+print_r($result);
+```
+
+-------
 
 2010 by Johannes Zinnau
 johannes@johnimedia.de
